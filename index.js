@@ -59,7 +59,7 @@ function processEvent(event, callback) {
     const severity = message.finding.severity;
     const externalUri = message.finding.externalUri;
     const Recommendation = message.finding.sourceProperties.Recommendation;
-    const projectDisplayName = message.resource.projectDisplayName;
+    const resourceName = message.finding.resourceName;
     const eventTime = message.finding.eventTime;
     const eventTimeObj = new Date(eventTime);
     const when = eventTimeObj.toUTCString();
@@ -133,8 +133,9 @@ function processEvent(event, callback) {
                     },
                     {
                         "keyValue": {
-                            "topLabel": "In Project",
-                            "content": `${projectDisplayName}`
+                            "topLabel": "Resource",
+                            "content": `${resourceName}`,
+                            "contentMultiline": true
                         }
                     }
                 ]
